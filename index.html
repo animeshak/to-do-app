@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - ToDoApp</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>   
+</head>
+<body class="container">
+
+    <h1>ToDo App</h1>
+    <input type="text" name="" id="task"/> <button class="btn btn-primary" onclick="addtolist()">Add</button>
+    
+    <hr>
+    
+    <ul class="list-group" id="list-group">
+    </ul>
+    <script>
+    
+    // arraylist()
+    function addtolist(){
+        task = document.getElementById("task").value    
+        // alert(task)
+        todolist.push(task)
+        arraylist()
+    }
+
+    todolist = ["Mobile Recharge"];
+    function arraylist(){
+
+        output = ""
+        for(var i=0;i < todolist.length;i++){
+            // console.log(todolist[i])
+            
+            output = output + `<li class="list-group-item"><span onclick="donetask(this)">${todolist[i]}</span> <button onclick="removetask('${todolist[i]}')">X</button></li>`
+            // output = output + `<li class="list-group-item">Electric Bill</li>`
+        }
+        document.getElementById("list-group").innerHTML = output
+    }
+
+    function removetask(task){
+        // alert(task)
+        
+        const index = todolist.indexOf(task)
+        if(index > -1){
+            todolist.splice(index,1);
+        }
+        arraylist()
+    }
+
+    function donetask(spanelement){
+        var task = spanelement.innerHTML 
+        // alert(spanelement.innerHTML)
+        spanelement.innerHTML = task.strike()
+    }
+    </script>
+
+</body>
+</html>
